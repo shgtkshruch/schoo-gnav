@@ -4,8 +4,91 @@ html(lang="ja")
     meta(charset='UTF-8')
     title schoo-gnav
     meta(content='width=device-width, initial-scale=1' name='viewport')
+
+    // build:css styles/vendor.css
+    // bower:css
+    link(rel='stylesheet', href='../bower_components/normalize.css/normalize.css')
+    // endbower
+    // endbuild
     
     link(rel='stylesheet', href='styles/style.css', media='all')
   body
+    .container
+      article.main
+        header.header.section
+          .header__top
+            .top__left
+              p.copy メトロモニーはあなたのビジネス・ソリューションにイノベーションを起こします。
+              h1.logo 株式会社メトロモニー
+            .top__right
+              ul.sns
+                each item in ['rss', 'fb', 'tw', 'go', 'fi', 'in']
+                  li.sns__item
+                    a(href="#")
+                      img(src="images/sns-#{item}.png")
+              nav
+                ul.nav
+                  each item in ['サイトマップ', 'お問い合わせ', '採用情報']
+                    li.nav__item
+                      a(href="#") #{item}
+          nav
+            ul.gnav
+          .hero
+            img.hero__img(src="images/biz-hero.jpg")
 
-    script(src='scripts/script.js')
+        - var cat = ['work', 'post']
+        - var headings = ['Vestibulum Euismod Commodo Aenean', 'Bibendum Fringilla', 'Sem Fusce Ultricies']
+        - var bodies = ['Nulm id dolor id nibh ultricies vehicula ut id elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula.', 'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec sed odio dui. Vestibulum id ligula.', 'Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh, ut fermentum massa justo sit amet risus.']
+        - for(var i = 0; i < 2; i++)
+          section.section
+            h1.section__title recent #{cat[i]}s
+            .section__body
+              .body--primary
+                img.item__img(src="images/biz-#{cat[i]}-1.jpg")
+                h2.item__title--primary #{headings[0]}
+                p.item__body #{bodies[0]}
+              .body--secondary
+                - for(var j = 0; j < 2; j++)
+                  img.item__img(src="images/biz-#{cat[i]}-#{j+2}.jpg")
+                  h2.item__title--primary #{headings[j+1]}
+                  p.item__body #{bodies[j+1]}
+
+      section.side
+        h1.logo
+          img(src="images/biz-logo.jpg")
+        section.section
+          nav
+            ul.nav
+              each item in ['home', 'about us', 'our works', 'services', 'journal', 'contact us']
+                li.nav__item
+                  a(href="#") #{item}
+        section.section
+          h1.section__title popular posts
+          ul.pop
+            - var items = ['Magna Ullamcorper Dolor Fermentum', 'Commodo Fusce Dolor Adipiscing', 'Quam Inceptos Lorem Tortor Risus']
+            each item, i in items
+              li.pop__item
+                a.pop__img(href="#")
+                  img(src="images/biz-pop-#{i+1}.jpg")
+                p.pop__body #{item}
+        section.section
+          h1.section__title search
+          form.srch-box
+            input.srch-box__input
+        section.section
+          h1.section__title categories
+          ul
+            - var items = ['Commodo Fusce (12)', 'Dolor Adipiscing (45)', 'Quam Inceptos (17)', 'Lorem Tortor Risus (24)', 'Elit Vestibulum Justo (32)', 'Egestas Inceptos Lorem (21)']
+            each item in items
+              li
+                a(href="#") #{item}
+        section.section
+          h1.section__title sponsors
+          .sp
+            - for (var i = 0; i < 2; i++)
+              img.sp__img(src="images/biz-sp-#{i+1}.jpg")
+
+    footer.footer.section
+      span.cpr © 2011 Metronomy. All Rights Reserved.
+
+      script(src='scripts/script.js')

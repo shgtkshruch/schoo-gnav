@@ -1,6 +1,8 @@
 {
   "name": "schoo-gnav",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "normalize.css": "~3.0.2"
+  },
   "devDependencies": {}
 }
