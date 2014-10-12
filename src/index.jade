@@ -14,25 +14,29 @@ html(lang="ja")
     // endbuild
     
     link(rel='stylesheet', href='styles/style.css', media='all')
-  body
+  body.biz
     .container
       article.main
         header.header.section
-          .header__top.top
+          .header__top.top#js-change
             .line
-              p.line__left.copy メトロモニーはあなたのビジネス・ソリューションにイノベーションを起こします。
-              ul.line__right.sns
-                each item in ['rss', 'fb', 'tw', 'go', 'fi', 'in']
-                  li.sns__item
-                    a(href="#")
-                      img(src="images/sns-#{item}.png")
+              .line__left
+                p.copy メトロモニーはあなたのビジネス・ソリューションにイノベーションを起こします。
+              .line__right
+                ul.sns
+                  each item in ['rss', 'fb', 'tw', 'go', 'fi', 'in']
+                    li.sns__item
+                      a(href="#")
+                        img(src="images/sns-#{item}.png")
             .line
-              h1.line__left.logo 株式会社メトロモニー
-              nav.line__right
-                ul.nav
-                  each item in ['サイトマップ', 'お問い合わせ', '採用情報']
-                    li.nav__item
-                      a(href="#") #{item}
+              .line__left
+                h1.logo 株式会社メトロモニー
+              .line__right
+                nav
+                  ul.nav
+                    each item in ['サイトマップ', 'お問い合わせ', '採用情報']
+                      li.nav__item
+                        a(href="#") #{item}
           nav
             ul.gnav
           .hero
@@ -107,5 +111,14 @@ html(lang="ja")
               a.sp__img(href="#")
                 img(src="images/biz-sp-#{i+1}.jpg")
 
+    .select
+      select#js-theme
+        - var select = ['biz', 'dog', 'htl']
+        - var text = ['ビジネス', '盲導犬', '旅館']
+        each s, i in select
+          option(value="#{s}") #{text[i]}
+      .fa.fa-chevron-down
 
-      script(src='scripts/script.js')
+    script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+    script(src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js")
+    script(src='scripts/script.js')

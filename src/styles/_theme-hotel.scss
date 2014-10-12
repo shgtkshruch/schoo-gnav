@@ -1,0 +1,19 @@
+body.htl {
+  $color-green: #4a8b86;
+
+  margin-top: 10px;
+  background-color: initial;
+  background-image: url(../images/htl-bg.jpg);
+  a:hover {
+    color: $color-green;
+  }
+  .section.list:before {
+    background-color: $color-green;
+  }
+  .section__title > span {
+    color: $color-green;
+  }
+  .item__title--primary {
+    color: $color-green;
+  }
+}

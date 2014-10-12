@@ -54,7 +54,6 @@ p {
 .side {
   width: $width-side;
   float: left;
-
 }
 
 .section {
@@ -136,7 +135,7 @@ p {
   }
   &__right {
     float: right;
-    > .nav {
+    .nav {
       padding: 10px 0;
     }
   }
@@ -180,7 +179,6 @@ p {
     font-family: Delicious, sans-serif;
     font-size: $fz-heading--second;
     line-height: 1;
-    color: #8d8d8d;
     text-transform: uppercase;
     &__item {
       border-bottom: 1px solid;
@@ -188,6 +186,7 @@ p {
         border-bottom: none;
       }
       > a {
+        color: #8d8d8d;
         display: block;
         padding: 10px 0;
         &:hover {
@@ -199,7 +198,7 @@ p {
 }
 
 .gnav {
-  height: 100px;
+  height: 130px;
 }
 
 .pop {
@@ -320,4 +319,25 @@ p {
   height: 19px;
   background-image: url(../images/arrow-top.png); 
   float: right;
+}
+
+.select {
+  position: fixed;
+  top: 0;
+  left: calc( (100vw - 960px) / 2 - 8em);
+  > select {
+    padding: 10px 2em 10px 1em;
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    background-color: #fff;
+  }
+  .fa {
+    color: #000;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-.7em, -63%);
+  }
 }
