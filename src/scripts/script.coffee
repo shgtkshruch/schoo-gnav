@@ -1,6 +1,6 @@
 $ ->
-  themeNow = 'biz'
-  themeNext = ''
+  themeNow = themeNext = 'biz'
+  htmlCache = {}
 
   $select = $ '#js-theme'
   $body = $ 'body'
@@ -9,39 +9,32 @@ $ ->
   $select.change (e) ->
     themeNext = e.target.value
     $body.toggleClass theme for theme in [themeNow, themeNext]
+    remove()
     replaceImg img for img in $ 'img'
+    importHeader()
     themeNow = themeNext
-    removeEl()
 
   replaceImg = (img) ->
     src = img.src
     if src.indexOf(themeNow) isnt -1
       img.src = src.replace themeNow, themeNext
 
-  removeEl = ->
+  remove = ->
     $header
       .children()
       .remove()
 
-    insertEl()
+  importHeader = ->
+    if not htmlCache.hasOwnProperty themeNext
+      theme = 'link[rel="import"][href*="' + themeNext + '"]'
+      link = document.querySelector theme
+      content = link.import
 
-  insertEl = ->
-    switch themeNow
-      when 'biz' then biz()
-      when 'dog' then dog()
-      when 'htl' then htl()
+      el = content.querySelectorAll '.line'
+      htmlCache[themeNext] = el
+    else 
+      el = htmlCache[themeNext]
 
-  biz = ->
+    $header.append el
 
-  dog = ->
-
-  htl = ->
-
-  handle = ->
-    source = $('.handle').html()
-    console.log source
-    template = Handlebars.compile source
-    context = {test: 'from javascript'}
-    html = template context
-
-  handle()
+  importHeader()

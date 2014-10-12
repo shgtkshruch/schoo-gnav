@@ -5,38 +5,17 @@ html(lang="ja")
     title schoo-gnav
     meta(content='width=device-width, initial-scale=1' name='viewport')
 
+    link(rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css")
     link(rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css")
-
-    // build:css styles/vendor.css
-    // bower:css
-    link(rel='stylesheet', href='../bower_components/normalize.css/normalize.css')
-    // endbower
-    // endbuild
-    
     link(rel='stylesheet', href='styles/style.css', media='all')
+    link(rel="import" href="import/biz.html")
+    link(rel="import" href="import/dog.html")
+    link(rel="import" href="import/htl.html")
   body.biz
     .container
       article.main
         header.header.section
           .header__top.top#js-change
-            .line
-              .line__left
-                p.copy メトロモニーはあなたのビジネス・ソリューションにイノベーションを起こします。
-              .line__right
-                ul.sns
-                  each item in ['rss', 'fb', 'tw', 'go', 'fi', 'in']
-                    li.sns__item
-                      a(href="#")
-                        img(src="images/sns-#{item}.png")
-            .line
-              .line__left
-                h1.logo 株式会社メトロモニー
-              .line__right
-                nav
-                  ul.nav
-                    each item in ['サイトマップ', 'お問い合わせ', '採用情報']
-                      li.nav__item
-                        a(href="#") #{item}
           nav
             ul.gnav
           .hero
@@ -120,5 +99,4 @@ html(lang="ja")
       .fa.fa-chevron-down
 
     script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
-    script(src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js")
     script(src='scripts/script.js')
