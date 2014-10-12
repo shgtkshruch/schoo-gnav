@@ -5,6 +5,8 @@ html(lang="ja")
     title schoo-gnav
     meta(content='width=device-width, initial-scale=1' name='viewport')
 
+    link(rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css")
+
     // build:css styles/vendor.css
     // bower:css
     link(rel='stylesheet', href='../bower_components/normalize.css/normalize.css')
@@ -16,17 +18,17 @@ html(lang="ja")
     .container
       article.main
         header.header.section
-          .header__top
-            .top__left
-              p.copy メトロモニーはあなたのビジネス・ソリューションにイノベーションを起こします。
-              h1.logo 株式会社メトロモニー
-            .top__right
-              ul.sns
+          .header__top.top
+            .line
+              p.line__left.copy メトロモニーはあなたのビジネス・ソリューションにイノベーションを起こします。
+              ul.line__right.sns
                 each item in ['rss', 'fb', 'tw', 'go', 'fi', 'in']
                   li.sns__item
                     a(href="#")
                       img(src="images/sns-#{item}.png")
-              nav
+            .line
+              h1.line__left.logo 株式会社メトロモニー
+              nav.line__right
                 ul.nav
                   each item in ['サイトマップ', 'お問い合わせ', '採用情報']
                     li.nav__item
@@ -40,55 +42,70 @@ html(lang="ja")
         - var headings = ['Vestibulum Euismod Commodo Aenean', 'Bibendum Fringilla', 'Sem Fusce Ultricies']
         - var bodies = ['Nulm id dolor id nibh ultricies vehicula ut id elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula.', 'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec sed odio dui. Vestibulum id ligula.', 'Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh, ut fermentum massa justo sit amet risus.']
         - for(var i = 0; i < 2; i++)
-          section.section
-            h1.section__title recent #{cat[i]}s
+          section.section.content-box
+            .section__header
+              h1.section__title
+                span recent #{cat[i]}s
+              .arrow
+                a.arrow__item(href="#")
+                a.arrow__item(href="#")
             .section__body
-              .body--primary
-                img.item__img(src="images/biz-#{cat[i]}-1.jpg")
-                h2.item__title--primary #{headings[0]}
-                p.item__body #{bodies[0]}
-              .body--secondary
-                - for(var j = 0; j < 2; j++)
-                  img.item__img(src="images/biz-#{cat[i]}-#{j+2}.jpg")
-                  h2.item__title--primary #{headings[j+1]}
-                  p.item__body #{bodies[j+1]}
+              - for(var j = 0; j < 3; j++)
+                .item
+                  a(href="#")
+                    img.item__img(src="images/biz-#{cat[i]}-#{j+1}.jpg")
+                  if j === 0
+                    h2.item__title--primary #{headings[0]}
+                  else
+                    h2.item__title--secondary #{headings[j]}
+                  p.item__body #{bodies[j]}
+
+        footer.footer.section
+          span.cpr © 2011 Metronomy. All Rights Reserved.
+          a.go-top(href="#")
 
       section.side
         h1.logo
           img(src="images/biz-logo.jpg")
-        section.section
+        section.section.list
           nav
             ul.nav
               each item in ['home', 'about us', 'our works', 'services', 'journal', 'contact us']
                 li.nav__item
                   a(href="#") #{item}
         section.section
-          h1.section__title popular posts
+          h1.section__title
+            span popular posts
           ul.pop
             - var items = ['Magna Ullamcorper Dolor Fermentum', 'Commodo Fusce Dolor Adipiscing', 'Quam Inceptos Lorem Tortor Risus']
             each item, i in items
               li.pop__item
                 a.pop__img(href="#")
                   img(src="images/biz-pop-#{i+1}.jpg")
-                p.pop__body #{item}
+                .pop__body
+                  p #{item}
         section.section
-          h1.section__title search
+          h1.section__title
+            span search
           form.srch-box
-            input.srch-box__input
-        section.section
-          h1.section__title categories
+            .srch-box__input
+              input
+              .fa.fa-search
+        section.section.cat
+          h1.section__title
+            span categories
           ul
             - var items = ['Commodo Fusce (12)', 'Dolor Adipiscing (45)', 'Quam Inceptos (17)', 'Lorem Tortor Risus (24)', 'Elit Vestibulum Justo (32)', 'Egestas Inceptos Lorem (21)']
             each item in items
-              li
+              li.cat__item
                 a(href="#") #{item}
         section.section
-          h1.section__title sponsors
+          h1.section__title
+            span sponsors
           .sp
             - for (var i = 0; i < 2; i++)
-              img.sp__img(src="images/biz-sp-#{i+1}.jpg")
+              a.sp__img(href="#")
+                img(src="images/biz-sp-#{i+1}.jpg")
 
-    footer.footer.section
-      span.cpr © 2011 Metronomy. All Rights Reserved.
 
       script(src='scripts/script.js')
