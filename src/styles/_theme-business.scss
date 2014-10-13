@@ -1,0 +1,16 @@
+body.biz {
+  $color-blue: $color-heading--first;
+  a:hover {
+    color: $color-blue;
+  }
+  .logo {
+    font-size: 24px;
+    color: $color-blue;
+  }
+  .header .nav .nav__item:before {
+    left: -15px;
+    width: 12px;
+    height: 12px;
+    background-image: url('../images/biz-arrow.png');
+  }
+}

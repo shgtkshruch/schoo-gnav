@@ -1,17 +1,35 @@
+@font-face {
+  font-family: 'Hannari';
+  src: url(../font/Hannari.otf) format('opentype');
+}
+
 body.htl {
   $color-green: #4a8b86;
-
   margin-top: 10px;
   background-color: initial;
   background-image: url(../images/htl-bg.jpg);
   a:hover {
     color: $color-green;
   }
-  .section.list:before {
-    background-color: $color-green;
+  .copy {
+    width: 310px;
+    font-family: 'Hannari';
+    line-height: 1.2;
   }
-  .section__title > span {
-    color: $color-green;
+  .line:first-child {
+    margin-bottom: 8px;
+  }
+  .section {
+    background-image: url(../images/htl-section-bg.jpg);
+    &.list:before {
+      background-color: $color-green;
+    }
+
+    &__title > span {
+      color: $color-green;
+      background-image: url(../images/htl-section-bg.jpg);
+
+    }
   }
   .item__title--primary {
     color: $color-green;

@@ -4,6 +4,47 @@ body.dog {
   a:hover {
     color: $color-green;
   }
+  .copy {
+    font-family: Delicious;
+  }
+  .header  {
+    .nav {
+      padding: 0;
+      margin-bottom: 5px;
+      &__item {
+        margin-left: 30px;
+        &:before {
+          width: 25px;
+          height: 15px;
+          left: -25px;
+          background-repeat: no-repeat;
+        }
+        @for $i from 1 through 3 {
+          &:nth-child(#{$i}):before {
+            @if $i == 2 {
+              left: -20px;
+            }
+            background-image: url(../images/dog-nav__icon-#{$i}.png);
+          }
+        }
+      }
+    }
+    .srch-box {
+      position: relative;
+      &__input {
+        width: 250px;
+        height: 30px;
+        font-size: 20px;
+      }
+      .fa {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translate(0, -65%);
+        font-size: 20px;
+      }
+    }
+  }
   .section.list:before {
     background-color: $color-green;
   }
