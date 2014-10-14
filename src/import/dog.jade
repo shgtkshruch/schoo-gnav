@@ -1,17 +1,26 @@
-.line
-  .line__left
-    p.copy Hi! My Name Is Metronomy. Welcome to my Website..
-      .line__right
-        nav
-          ul.nav
+.import
+  .line
+    .line__left
+      p.copy Hi! My Name Is Metronomy. Welcome to my Website..
+    .line__right
+      nav
+        ul.nav
+          each item in ['法人・団体の皆様へ', 'よくある質問', 'お問い合わせ']
             li.nav__item
-              a(href='#') 法人・団体の皆様へ
-            li.nav__item
-              a(href='#') よくある質問
-            li.nav__item
-              a(href='#') お問い合わせ
-    .line
-      .line__right
-        form.srch-box
-          input.srch-box__input(type='text')
+              a(href='#') #{item}
+  .line
+    .line__right
+      form.srch-box
+        input.srch-box__input(type='text')
+        i.fa.fa-search
+
+  nav
+    ul.gnav
+      - var jp = ['お知らせ', '盲導犬について', '協会について', 'サポート', 'アクセス']
+      - var fa = ['paper-plane', 'paw', 'bank', 'heart', 'automobile']
+      each item, i in jp
+        li.gnav__item
+          a(href="#") 
+            span #{item}
+            i(class="fa fa-#{fa[i]}")
 

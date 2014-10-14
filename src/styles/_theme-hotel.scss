@@ -8,6 +8,65 @@ body.htl {
   margin-top: 10px;
   background-color: initial;
   background-image: url(../images/htl-bg.jpg);
+  .gnav {
+    font-family: hannari;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 1.5em 0 0;
+    overflow: hidden;
+    &__item {
+      $color-border: #ababab;
+      $width-border: 2px;
+      display: block;
+      float: left;
+      -webkit-writing-mode: vertical-lr;
+      vertical-align: top;
+      border-width: $width-border;
+      border-style: solid;
+      border-image: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0, 0, 0, 0)) 1 100%;
+      border-right-width: 0;
+      &:last-child {
+        border-right-width: $width-border;
+        border-left-width: $width-border;
+      }
+      > a {
+        $width: ((720px - $width-border * (8 + 1)) / 8);
+        position: relative;
+        display: block;
+        padding-top: 2.8em;
+        width: $width;
+        height: 12em;
+        color: #000;
+        text-shadow: 0px 0px 3px rgba(200, 200, 200, 0.3);
+        line-height: $width;
+        &:before {
+          $size: 5px;
+          content: '';
+          position: absolute;
+          top: 1.5em;
+          left: 50%;
+          transform: translate(-50%, 0) rotate(45deg);
+          width: $size;
+          height: $size;
+          background-color: #000;
+        }
+        &:after {
+          content: attr(data-en);
+          position: absolute;
+          top: 4.8em;
+          left: -1.5em;
+          font-size: 10px;
+        }
+        &:hover {
+          color: $color-green;
+          text-decoration: none;
+          &:before {
+            background-color: $color-green; 
+          }
+        }
+      }
+    }
+  }
   a:hover {
     color: $color-green;
   }

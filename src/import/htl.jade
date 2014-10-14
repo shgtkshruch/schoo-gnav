@@ -1,27 +1,21 @@
-.line
-  .line__right
-    ul.sns
-      li.sns__item
-        a(href='#')
-          img(src='images/sns-rss.png')
+.import
+  .line
+    .line__right
+      ul.sns
+        each item in ['rss', 'fb', 'tw', 'go', 'fi', 'in']
           li.sns__item
             a(href='#')
-              img(src='images/sns-fb.png')
-          li.sns__item
-            a(href='#')
-              img(src='images/sns-tw.png')
-          li.sns__item
-            a(href='#')
-              img(src='images/sns-go.png')
-          li.sns__item
-            a(href='#')
-              img(src='images/sns-fi.png')
-          li.sns__item
-            a(href='#')
-              img(src='images/sns-in.png')
-    .line
-      .line__left.copy
-        p 渋谷とは思えない、ひっそりとした佇まいです。 女将のすくうにゃる子がおもてなしいたします。
-      .line__right.tel
-        img(src='images/htl-tel.jpg')
+              img(src='images/sns-#{item}.png')
+  .line
+    .line__left.copy
+      p 渋谷とは思えない、ひっそりとした佇まいです。 女将のすくうにゃる子がおもてなしいたします。
+    .line__right.tel
+      img(src='images/htl-tel.jpg')
 
+  nav
+    ul.gnav
+      - var jp = ['おもてなし' , '旅館について', 'お料理', 'お部屋', '温泉', 'アクセス', '周辺観光', 'お問い合わせ']
+      - var en = ['Hospitality' , 'History', 'Course', 'Room', 'Onsen', 'Access', 'Sightseeing', 'Contact']
+      each item, i in jp
+        li.gnav__item
+          a(href="#" data-en="#{en[i]}") #{item}
