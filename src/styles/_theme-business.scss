@@ -11,33 +11,33 @@ body.biz {
     $width-hover: 200px;
     $duration: .3s;
     $width-border: 2px;
+    $num: 5;
 
     &:after {
       content: '';
       clear: both;
       display: table;
     }
-    &:hover {
-      & > .gnav__item {
-        &:hover {
-          width: $width-hover;
-        }
-        &:not(hover) {
-          $width: ( 720px - $width-hover ) / 4;
-          width: $width;
-        }
+    &:hover > .gnav__item {
+      &:hover {
+        width: $width-hover;
+      }
+      &:not(hover) {
+        $width: ( 720px - $width-hover ) / ($num - 1);
+        width: $width;
       }
     }
     &__item {
-      $padding: .7rem;
-      $margin-text: .35rem;
+      $width: 720px / $num;
+      $padding: .4rem;
+      $margin-text: .2rem;
       $fz-en: .8rem;
       $fz-jp: .5rem;
 
       position: relative;
       float: left;
       border-right: $width-border solid #fff;
-      width: calc(720px / 5 );
+      width: $width;
       transition: all $duration;
       &:last-child {
         border-right: none;
@@ -49,14 +49,32 @@ body.biz {
         left: 50%;
         transform: translate(-50%, 0);
         width: 0;
-        height: 2px;
+        height: 1px;
         background-color: #fff;
-        transition: width $duration;
+        transition: width $duration $duration / 2;
         pointer-events: none;
         z-index: 1;
       }
-      &:hover:after {
-        width: 55%;
+      &:hover {
+        &:after {
+          width: 55%;
+        }
+        & > a {
+          color: #fff;
+          text-decoration: none;
+          letter-spacing: .1em;
+          &:before {
+            background-color: #0173D2;
+            border-left: 3px solid #fff;
+            border-right: 3px solid #fff;
+          }
+        }
+        &:first-child > a:before {
+          border-left: none;
+        }
+        &:last-child > a:before {
+          border-right: none;
+        }
       }
       > a {
         position: relative;
@@ -91,14 +109,6 @@ body.biz {
           z-index: 1;
         }
         &:hover {
-          color: #fff;
-          text-decoration: none;
-          letter-spacing: .1em;
-          &:before {
-            background-color: #0173D2;
-            border-top: 3px solid #fff;
-            border-bottom: 3px solid #fff;
-          }
         }
       }
     }
