@@ -9,6 +9,7 @@ window.onload = ->
     changeTheme themeNext
 
   changeTheme themeNext
+  tutorial()
 
 changeTheme = (themeNext) ->
   body.classList.toggle theme for theme in [themeNow, themeNext]
@@ -25,3 +26,21 @@ importHeader = ->
   t = document.querySelector id
   clone = document.importNode t.content, true
   header.appendChild clone
+
+tutorial = ->
+  bg = document.createElement 'div'
+  bg.classList.add 't-bg'
+  el = body.appendChild bg
+  select.parentElement.classList.add 'tutorial'
+
+  remove = ->
+    if body.querySelector '.t-bg'
+      body.removeChild el
+      select.parentElement.classList.remove 'tutorial'
+      window.removeEventListener 'click', remove
+
+  window.addEventListener 'click', remove
+
+  setTimeout(-> 
+    remove()
+  , 5000)
