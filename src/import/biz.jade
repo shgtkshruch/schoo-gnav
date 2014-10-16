@@ -23,4 +23,4 @@ template#temp-biz
       - var jp = ['お知らせ', '会社情報', 'サービス', 'プロジェクト', 'アクセス']
       each item, i in ['news', 'company', 'searvice', 'project', 'access']
         li.gnav__item
-          a(href="#" data-jp="#{jp[i]}") #{item}
+          a(href="#" jp="#{jp[i]}") #{item}

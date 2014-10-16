@@ -64,6 +64,8 @@ body.biz {
           text-decoration: none;
           letter-spacing: .1em;
           &:before {
+            $radius: 50px;
+            border-radius: $radius 0;
             background-color: #0173D2;
             border-left: 3px solid #fff;
             border-right: 3px solid #fff;
@@ -97,10 +99,11 @@ body.biz {
           height: 100%;
           background-color: $color-gb;
           transform: skewX(-30deg);
+          transition: $duration;
           z-index: -1;
         }
         &:after {
-          content: attr(data-jp);
+          content: attr(jp);
           position: absolute;
           top: ($padding + $fz-en + $margin-text);
           left: 50%;

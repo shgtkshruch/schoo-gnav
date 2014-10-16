@@ -5,14 +5,13 @@
 
 body.htl {
   $color-green: #4a8b86;
-  margin-top: 10px;
   background-color: initial;
   background-image: url(../images/htl-bg.jpg);
   .gnav {
     $width-hover: 200px;
     $color-border: #ababab;
     $width-border: 1px;
-    $duration-hover: 0.1s;
+    $duration-hover: 0.3s;
     $num: 8;
 
     font-family: hannari;
@@ -21,19 +20,22 @@ body.htl {
     margin: 1.5em 0 0;
     overflow: hidden;
     &__item {
-      transform: translate3d(0,0,0);
+      $width: ((720px - $width-border * ($num + 1)) / $num);
       position: relative;
       display: block;
       float: left;
+      width: $width;
       -webkit-writing-mode: vertical-lr;
-      vertical-align: top;
       border-width: $width-border;
       border-style: solid;
       border-image: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0, 0, 0, 0)) 1 100%;
-      border-top-width: 0;
+      border-top-width: 1px;
+      border-top-color: transparent;
+      border-bottom-width: 1px;
+      border-bottom-color: transparent;
       border-right-width: 0;
-      border-bottom-width: 0;
-      transition: box-shadow $duration-hover;
+      transition-property: border-radius boder-iamge;
+      transition-duration: $duration-hover;
       &:last-child {
         border-right-width: $width-border;
         border-left-width: $width-border;
@@ -43,7 +45,6 @@ body.htl {
 
         content: '';
         position: absolute;
-        bottom: 0;
         right: 0;
         width: 100%;
         height: $size;
@@ -51,22 +52,22 @@ body.htl {
         background-image: url(../images/momiji.jpg);
         background-size: $size $size;
         background-repeat: no-repeat;
+        transition: opacity 1s;
+      }
+      &:nth-child(odd):after {
+        bottom: 1em;
+      }
+      &:nth-child(even):after {
+        bottom: 0;
       }
       @for $i from 1 through $num {
-        $delta: 7;
-        $sita: (180 - $delta * $num / 2) + $i * $delta;
+        $delta: 9;
+        $angle: (180 - $delta * $num / 2) + $i * $delta;
         &:nth-child(#{$i}):after {
-          transform: rotate(#{$sita}deg);
+          transform: rotate(#{$angle}deg);
         }
       }
       &:hover {
-        box-shadow: inset 1px 1px 10px -2px rgba(142, 142, 142, 0.91);
-        border-image: none;
-        border-color: transparent;
-        & + .gnav__item {
-          border-image: none;
-          border-color: transparent;
-        }
         &:after {
           opacity: .1;
         }
@@ -79,11 +80,9 @@ body.htl {
         }
       }
       > a {
-        $width: ((720px - $width-border * ($num + 1)) / $num);
         position: relative;
         display: block;
         padding-top: 2.8em;
-        width: $width;
         height: 12em;
         color: #000;
         text-shadow: 0px 0px 3px rgba(200, 200, 200, 0.3);
