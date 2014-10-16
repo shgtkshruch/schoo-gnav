@@ -1,33 +1,27 @@
-$ ->
-  themeNow = 'biz'
-  themeNext = 'biz'
+themeNow = themeNext = 'biz'
+select = document.querySelector '#js-theme'
+body   = document.querySelector 'body'
+header = document.querySelector '#js-change'
 
-  $select = $ '#js-theme'
-  $body = $ 'body'
-  $header = $ '#js-change'
-
-
-  changeTheme = (themeNext) ->
-    $body.toggleClass theme for theme in [themeNow, themeNext]
-    remove()
-    replaceImg img for img in $ 'img'
-    importHeader()
-    themeNow = themeNext
-
-  replaceImg = (img) ->
-    img.src = img.src.replace themeNow, themeNext
-
-  remove = ->
-    $header.children().remove()
-
-  importHeader = ->
-    theme = 'link[rel="import"][href*="' + themeNext + '"]'
-    content = $('html').find(theme)[0].import
-    $el = $(content).find '.import'
-    $header.append  $el.clone()
+window.onload = ->
+  select.addEventListener 'change', (e) -> 
+    themeNext = e.target.value
+    changeTheme themeNext
 
   changeTheme themeNext
 
-  $select.change (e) -> 
-    themeNext = e.target.value
-    changeTheme themeNext
+changeTheme = (themeNext) ->
+  body.classList.toggle theme for theme in [themeNow, themeNext]
+  header.removeChild node for node in document.querySelectorAll '#js-change > *'
+  replaceImg img for img in document.querySelectorAll 'img'
+  importHeader()
+  themeNow = themeNext
+
+replaceImg = (img) ->
+  img.src = img.src.replace themeNow, themeNext
+
+importHeader = ->
+  id = '#temp-' + themeNext
+  t = document.querySelector id
+  clone = document.importNode t.content, true
+  header.appendChild clone

@@ -8,9 +8,6 @@ html(lang="ja")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css")
     link(rel='stylesheet', href='styles/style.css', media='all')
-    link(rel="import" href="import/biz.html")
-    link(rel="import" href="import/dog.html")
-    link(rel="import" href="import/htl.html")
   body.biz
     .container
       article.main
@@ -96,5 +93,8 @@ html(lang="ja")
           option(value="#{s}") #{text[i]}
       .fa.fa-chevron-down
 
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+    include ./import/biz.jade
+    include ./import/dog.jade
+    include ./import/htl.jade
+
     script(src='scripts/script.js')

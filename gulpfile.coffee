@@ -40,7 +40,7 @@ gulp.task 'html', ['jade'], ->
     .pipe gulp.dest config.dest
 
 gulp.task 'jade', ->
-  gulp.src config.src + '/**/*.jade'
+  gulp.src config.src + '/index.jade'
     .pipe $.plumber()
     .pipe $.changed config.dest,
       extension: '.jade'
