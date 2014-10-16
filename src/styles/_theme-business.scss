@@ -31,8 +31,8 @@ body.biz {
       $width: 720px / $num;
       $padding: .4rem;
       $margin-text: .2rem;
-      $fz-en: .8rem;
-      $fz-jp: .5rem;
+      $fz-en: .9rem;
+      $fz-jp: .6rem;
 
       position: relative;
       float: left;
@@ -62,7 +62,6 @@ body.biz {
         & > a {
           color: #fff;
           text-decoration: none;
-          letter-spacing: .1em;
           &:before {
             $radius: 50px;
             border-radius: $radius 0;

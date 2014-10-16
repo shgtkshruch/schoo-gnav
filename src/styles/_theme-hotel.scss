@@ -29,13 +29,9 @@ body.htl {
       border-width: $width-border;
       border-style: solid;
       border-image: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0, 0, 0, 0)) 1 100%;
-      border-top-width: 1px;
-      border-top-color: transparent;
-      border-bottom-width: 1px;
-      border-bottom-color: transparent;
+      border-top-width: 0;
+      border-bottom-width: 0;
       border-right-width: 0;
-      transition-property: border-radius boder-iamge;
-      transition-duration: $duration-hover;
       &:last-child {
         border-right-width: $width-border;
         border-left-width: $width-border;
